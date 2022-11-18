@@ -1,0 +1,73 @@
+const COLLAGES = {
+            jordan: {
+                media: [
+                    './img/jordan/0.jpg',
+                    './img/jordan/1.jpg',
+                    './img/jordan/2.jpg',
+                    './img/jordan/0.gif',
+                    './img/jordan/3.jpg',
+                    './img/jordan/4.jpg',
+                    './img/jordan/1.gif',
+                    './img/jordan/5.jpg',
+                    './img/jordan/6.jpg',
+                ],
+                avatar: './img/jordan/profile.jpg',
+                name: 'Jordan Claassen',
+            },
+            andrew : {
+                media: [
+                    './img/andrew/0.jpg',
+                    './img/andrew/1.jpg',
+                    './img/andrew/2.jpg',
+                    './img/andrew/0.gif',
+                    './img/andrew/3.jpg',
+                    './img/andrew/4.jpg',
+                    './img/andrew/5.jpg',
+                    './img/andrew/6.jpg',
+                    './img/andrew/7.jpg',
+                    './img/andrew/8.jpg',
+                ],
+                avatar: './img/andrew/profile.jpg',
+                name: 'Andrew Gadson',
+            },
+            astro : {
+                media: [
+                    './img/astro/0.jpg',
+                    './img/astro/1.jpg',
+                    './img/astro/2.jpg',
+                    './img/astro/3.jpg',
+                    './img/astro/4.jpg',
+                    './img/astro/5.jpg',
+                    './img/astro/0.gif',
+                ],
+                avatar: './img/astro/profile.jpg',
+                name: 'Astro Tran',
+
+            },
+            jason : {
+                media: [
+                    './img/jason/0.jpg',
+                    './img/jason/1.jpg',
+                    './img/jason/2.jpg',
+                    './img/jason/3.jpg',
+                    './img/jason/4.jpg',
+                    './img/jason/5.jpg',
+                    './img/jason/6.jpg',
+                    './img/jason/7.jpg',
+                    './img/jason/8.jpg',
+                ],
+                avatar: './img/jason/profile.jpg',
+                name: 'Jason Masters',
+            },
+            peter : {
+                media: [
+                    './img/peter/0.jpg',
+                    './img/peter/1.jpg',
+                    './img/peter/2.jpg',
+                    './img/peter/0.gif',
+                    './img/peter/3.jpg',
+                ],
+                avatar: './img/peter/profile.jpg',
+                name: 'Peter Hockey',
+            },
+        };

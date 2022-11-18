@@ -1,167 +1,19 @@
 <html>
 
 <head>
-    <script type="text/javascript">
-        const IMAGES = [
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEVrVoqGm1gKss5rk-w6ysPHGVvhht1i-WVVnYT0_XZIRUaHTeiNLhe3N4EdOQ9xX20f9fbzVpZ-7Gw2ETJrhEQv-xjC2F8u4Lq-wbiRCnuVllISzT2wau2beyOdpkZXBDrGXZ5Es4Q1o_1uCLJ3SV7oAA=w2340-h1562-no',
-                top: 200,
-                left: 20,
-                height: 332,
-                avatarId: 0,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEXzzqtai4Vz3fZqm0-5Th7afMKQVlcDr3Xs0ixmEHbqSAtEHkqvy4NL19SP72w1x5ZYqd0Om1yQMXYVmHY63SZdKQ50PJD85Dv6lxf1IoF2ZlUDDPl-rSQCI4y-nCIkgDWNwArvrLrK_P3ygH6Q1Q4kng=w1172-h1758-no',
-                top: 50,
-                left: 600,
-                width: 332,
-                avatarId: 1,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEWrkjcRGNMhr1l3ZE1TPTVjHaAJnXTmrpZBNE1-k30cGULXjSdh4JNiIeXJNLWtNCGChs3vVPnuuHHmvDlGqL9pFNDxdSrfPznKIKv4dHCkfEBUgr6ipe59tyiXQnkGmoNT9cnorVSSSdrMkr1FbftGeQ=w1116-h1758-no',
-                top: 80,
-                left: 1000,
-                width: 466,
-                height: 750,
-                avatarId: 2,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEVoEywadSq4vrdBDFAZKNQU1y_H0kF0Kgl9AwNBs5TXZoTHnV9ZqVr6jq9gN4RDR25E8VQOIEV1t3SJcHpjwZiHmMZtiYXjuq27Ay7n-U2_jdGUeubNr0UnEh7Z_bWfZZzpGAJIMCVZxAjWG2MGPv2Zsg=w1172-h1758-no',
-                top: 30,
-                left: 1590,
-                width: 332,
-                avatarId: 0,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEVOZyIFLDBDl4njt7eoBOnywMRr6MXQ0myjiHQktrKAfaN9XIJGdIPM2ZaF-7kcTvgfIcVxu2BO3wdwVCP3mjqrUpdvKETU36RA2Cw7AKJ6lA0BZpPXrpvyNBHWOqLKDxUwJY_3NYENORqKEY23Ppj0tQ=w2232-h1490-no',
-                top: 700,
-                left: 400,
-                height: 332,
-                avatarId: 1,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEXBiZf812RS-xrmBT8CP1k0CHxNYx3eBd8JmYaMj9qBV8DaVQErOuGSxJJ5gf7eOtHoaAVYakWB24Q8CSmPbxa73F2wZMA613B0GiNFVFBFrMp18DKX7o6mY4uU5I9TvxfJhVFfZBPVK1NOyaDg7gvkWA=w2232-h1488-no',
-                top: 1000,
-                left: 1000,
-                height: 332,
-                avatarId: 2,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEU7MiuKcqoJ_QIuYbqrMGCHDKlCxegUSDImmbb_zacZoLRx6CUFL1KKxmwqPhWbi-IiYtmttlaxPAkEgB6Lew-bVn4-RNXP9IHUV-V_TMa4y-TbHWRD6W02qBOR6NVY1Z1rjkfVpCJ_gLcKmFASGg4llw=w2232-h1490-no',
-                top: 800,
-                left: 1700,
-                height: 332,
-                avatarId: 0,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEWLmqXHMTBmPE5Y16_jm-E5FGS_-VHKhuaaCKMeq7ybPnHEnMKa3rcWryZli7XdUXx7xikFWSrEQ51yrFFNznUVXrHVE4n2Nv6nfK3TzVub4xO64t3T5Hl3GfvX5_juUm7lZUtEODTzTz87Ij3F_rMS0A=w2232-h1478-no',
-                top: 220,
-                left: 2000,
-                height: 466,
-                width: 750,
-                avatarId: 1,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEVQiFs8BQUkdYzoQs6F4ZGf8iKjhzfcQ3Unsr2vxGRubeYaWnxGwnVDBJPF9cShBsJAsHIbzuQ-hdbQz5nE9M672XcfqPPRffxhkFT-FsQcIH92Hi_-sMGZ7z128LWV8Z2AJGJ5zRLurYMehyFkGAz5AQ=w1172-h1758-no',
-                top: 1160,
-                left: 40,
-                width: 466,
-                height: 700,
-                avatarId: 2,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEX90vCvQ6xVepcFRIMuSWpOVaCA1i1v_QSpradO6VUKG-UtQUXO6mGBbLYcf2xJAJ2FcGBe5BdF2w7QtswTWWRlcuxvdjQk_Ee1DrGkqT3eXhs4IA0CbVftw2r7JFsR0rSk5iicq6tBVKzDf1GYi9IlWQ=w1174-h1758-no',
-                top: 1200,
-                left: 600,
-                width: 332,
-                avatarId: 0,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEXzU2tD5OKFKCqo5cn-oOY6N49AdvAwC_2mA6ZudYLIK2iE2ZSSasuLGIKLtwNvOhZJfJeNYtay56Y5W0qXjk8tdQP-Ki38xpg2kNyWHJPR8x80zNRqEuhNW9RZ3a37bkJZ7Rcwy_PfaAvTntGa9xlvcA=w2232-h1536-no',
-                top: 1500,
-                left: 1200,
-                width: 700,
-                height: 466,
-                avatarId: 1,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEXcYniFySVkSfxj073Ed0pGNRMs0ooaKFpyJ-mJ-gSnwEelY5S-l7dJesdf7eAycehGEL-4rF9OY-kse-W2JBQ4Z8uQODG_SRcq35YeMpgDd9W99gNK4zzY_gug_-A-Vrae_0fmM3Hl1O9e9JDrzGLQeA=w2232-h1488-no',
-                top: 1300,
-                left: 2040,
-                height: 332,
-                avatarId: 2,
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEVeCZzIefXk9AiGH26Lr9ZQ2Hph9begFTItDI7Kn6UE6tIrjh-oWejDyfgtvTWuFYBdLITEec4zK_iabFAaozx7YOX0FQHMkeFAXHdgoAtU8bcETgyfynk1bahbjhF5g0OimMR6kAx_STOd17UjJ9rs4A=w1172-h1758-no',
-                top: 1850,
-                left: 750,
-                width: 332,
-                avatarId: 0,
-            },
-        ];
-
-        const STICKERS = [
-
-        ];
-
-        const AVATARS = [
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEU2RTi-gEXzvRkVa3Xsw_RAS5QG-FR7_yDP28VFaIUyl7R4NLhwRz1zIOWtVwE0jaHJ90C6Yus2xl0nSJ-OlwBNNL9K022MJSlkzNAY-y-02jyVNf34-eHSAkhG-F11UpN1MRla0TDRyOWwIkZXw9boiA=s64-no',
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEVSqfVqbs4EoZpeZC3Y-L56VXSdmfZ5o-baS6CM_gXh0UWhd3nbmbfHYyyxW94ugBqqkTARXo0HLcAtC5K3dD_gz3gc2DwcnjBalZpN1KhWUhgSh6chBqpk-kJOeF0WowRYWsyv0tlZX6Atd6brBxE2rA=s64-no',
-            },
-            {
-                url: 'https://lh3.googleusercontent.com/pw/AL9nZEV70dTF212LSQz4LF-iXz2qQ3WHUUaG9AwDVyYyjVSUfk2E9g9DlOa7UibddDxYNU3MplEJqT9DwHk8ZLBCN-qz8GqQwNjsbuErbB3wxSzaOdZdV_kvD50zSJOxcOgd2sZ115LLLL9kdUS04ecwBNT9zQ=s64-no',
-            },
-        ];
-
-        let lastVelocityX = 0;
-        let lastScreenX = window.pageXOffset;
-        let handle = null;
-
-        const measureAcceleration = () => {
-            const currentX = window.pageXOffset;
-            const currentVelocityX = currentX - lastScreenX;
-
-            if (Math.abs(currentVelocityX - lastVelocityX) > 5) {
-                startSwing();
-            }
-
-            lastVelocityX = currentVelocityX;
-            lastScreenX = currentX;
-            window.requestAnimationFrame(measureAcceleration);
-        };
-
-        const startSwing = () => {
-            if (handle != null) {
-                clearTimeout(handle);
-            }
-            const polaroids = document.getElementsByClassName('polaroid');
-            [...polaroids].forEach(p => {
-                p.classList.add('swinging-light');
-            });
-
-            handle = setTimeout(
-                stopSwing, 1500);
-        };
-        const stopSwing = () => {
-            handle = null;
-            const polaroids = document.getElementsByClassName('polaroid');
-            [...polaroids].forEach(p => {
-                p.classList.remove('swinging-light');
-            });
-        };
-
-        measureAcceleration();
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js">
     </script>
+
+    <script src="./config.js"></script>
+    <script src="./swing.js"></script>
+    <script src="./util.js"></script>
     <style>
         html,
         body {
             margin: 0;
             padding: 0;
             background-color: #FFFFCC;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
         }
 
         #canvas {
@@ -169,16 +21,47 @@
             min-height: 100%;
             padding: 50px;
             margin: 50px;
+            position: relative;
+        }
+
+        .collage {
+            position: absolute;
+            padding: 40px;
+        }
+
+        .userCard {
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .avatar {
+            background-size: cover;
+            height: 64px;
+            width: 64px;
+            border-radius: 50%;
+        }
+
+        .userName {
+
+        }
+
+        .timestamp {
+
         }
 
         .polaroid {
-            text-align: center;
             position: absolute;
+            display: inline-block;
             align-content: center;
             padding: 20px;
-            padding-bottom: 60px;
+            padding-bottom: 40px;
             border-radius: 12px;
             box-shadow: 16px 16px 4px rgba(0, 0, 0, .2);
+        }
+
+        .polaroid:hover {
+            z-index: 1000;
         }
 
         @keyframes swinging-light {
@@ -213,67 +96,162 @@
     </div>
 
     <script type="text/javascript">
-        const canvas = document.getElementById("canvas");
 
-        const genAvatar = (avatarData) => {
-            const el = document.createElement("div");
-            el.style.backgroundImage = `url('${avatarData.url}'`;
-            el.style.display = 'inline-block';
-            el.style.position = 'absolute';
-            el.style.marginTop = -52;
-            el.style.marginLeft = -32;
-            el.style.height = 64;
-            el.style.width = 64;
+        const genCollage = (collageData, index, collageCount) => {
+            const collage = genCollageContainer(index, collageCount, collageData.media.length);
 
-            return el;
+
+            // lay out media
+            const layerCounts = getMediaLayerCounts(collageData.media.length);
+            collageData.media.forEach((mediaData, index) => {
+                const media = genMedia(mediaData, index, layerCounts);
+                collage.appendChild(media);
+            });
+
+
+            // add avatar
+            const userCard = genUserCard(collageData);
+            collage.appendChild(userCard);
+
+
+            return collage;
+
+            // add stickers
+            collageData.stickers.forEach((stickerData, index) => {
+                const sticker = genSticker(stickerData, index);
+                collage.appendChild(sticker);
+            });
         };
 
-        const genPolaroid = (imgData) => {
-            const avatar = genAvatar(AVATARS[imgData.avatarId]);
-            const img = genImage(imgData);
-
+        const genCollageContainer = (index, collageCount, mediaCount) => {
             const el = document.createElement("div");
-            el.classList.add('polaroid');
+            el.classList.add('collage');
 
-            el.style.top = imgData.top + "px";
-            el.style.left = imgData.left + "px";
+            el.style.backgroundColor = genRandomPastel();
 
+            const [width, height] = getCollageDimensions(mediaCount);
+            el.style.width = width;
+            el.style.height =  height;
 
-            el.style.width = (imgData.width ?? 500) + "px";
-            el.style.height = (imgData.height ?? 500) + "px";
+            const OVERALL_WIDTH = 6000;
+            const OVERALL_HEIGHT = 4000;
 
-            const r = 204 + Math.round(51 * Math.random());
-            const g = 204 + Math.round(51 * Math.random());
-            const b = 204 + Math.round(51 * Math.random());
-            const borderColor = `rgb(${r},${g},${b})`;
-            el.style.backgroundColor = borderColor;
+            let relX;
+            let relY;
+            if(index == 4) {
+                relX = 0;
+                relY = 0;
+            }else {
+                const radian = (2 * Math.PI * index / 4) + Math.PI / 5;
+                relX = Math.sin(radian);
+                relY = Math.cos(radian);
+            }
 
-            el.appendChild(avatar);
-            el.appendChild(img);
+            const x = relX * OVERALL_WIDTH / 2 + OVERALL_WIDTH/2;
+            const y = relY * OVERALL_HEIGHT / 2 + OVERALL_HEIGHT/2;
+
+            el.style.left = x;
+            el.style.top = y;
+
+            // el.style.top = 40 + Math.floor(index / 3) * height * 1.2;
+            // el.style.left = 40 + Math.floor(index % 3) * width * 1.2;
 
             return el;
         }
 
-        const genImage = (imgData) => {
-            const imgEl = document.createElement("div");
-            imgEl.style.backgroundImage = `url('${imgData.url}')`;
 
-            imgEl.style.width = '100%';
-            imgEl.style.height = '100%';
-            imgEl.style.backgroundSize = 'cover';
-            imgEl.style.backgroundRepeat = 'no-repeat';
-            imgEl.style.borderRadius = '4px';
+        const genUserCard = (collageData) => {
+            const el = document.createElement("div");
+            el.classList.add('userCard');
+            el.style.marginTop = 100;
+            el.style.marginLeft = 100;
+
+            const avatar = genAvatar(collageData);
+            el.appendChild(avatar);
+
+            const textEl = document.createElement("div");
+            textEl.style.marginLeft = 16;
+
+            const name = document.createTextNode(collageData.name ?? 'Anon Smitherson');
+            const h3 = document.createElement('h3');
+            h3.classList.add('userName');
+            h3.appendChild(name);
+            textEl.appendChild(h3);
+
+            const tsText = document.createTextNode('5 days ago');
+            const span = document.createElement('span');
+            span.classList.add('timestamp');
+            span.appendChild(tsText);
+            textEl.appendChild(span);
+
+            el.appendChild(textEl);
+
+            return el;
+        };
+
+        const genAvatar = (collageData) => {
+            const el = document.createElement("div");
+            el.classList.add('avatar');
+            el.style.backgroundImage = `url('${collageData.avatar}'`;
+
+            return el;
+        };
+
+        const genMedia = (url, index, layerCounts) => {
+            let media;
+            if(isPhotoUrl(url)) {
+                media = genImage(url);
+            }else if(isVideoUrl(url)){
+                media = genVideo(url);
+            }
+
+            const el = document.createElement("div");
+            el.classList.add('polaroid');
+
+            const [x, y] = getMediaOffset(index, layerCounts);
+            el.style.left = x;
+            el.style.top = y;
+
+            el.style.backgroundColor = "#FFF";//genRandomPastel();
+
+            const caption = document.createTextNode('What an amazing day!');
+            const h4 = document.createElement('h4');
+            h4.classList.add('caption');
+            h4.appendChild(caption);
+
+            el.appendChild(media);
+            el.appendChild(h4);
+
+            return el;
+        }
+
+        const genVideo = (url) => {
+            const imgEl = document.createElement("div");
+            return imgEl;
+        }
+
+        const genImage = (url) => {
+            const imgEl = document.createElement("img");
+            imgEl.src = url;
+
+
+            imgEl.style.maxWidth = 500;
+            imgEl.style.maxHeight = 500;
+            imgEl.style.display = 'block';
 
             return imgEl;
         };
 
-        IMAGES.forEach(imgData => {
-            const el = genPolaroid(imgData);
+        (function() {
+            const canvas = document.getElementById("canvas");
 
-            canvas.appendChild(el);
-        });
+            Object.entries(COLLAGES).forEach(([name, collageData], index) => {
+                const el = genCollage(collageData, index, COLLAGES.length);
+                canvas.appendChild(el);
+            });
 
-        console.log('images created');
+            console.log('layout complete');
+        })();
     </script>
 </body>
 
