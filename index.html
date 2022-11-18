@@ -4,6 +4,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js">
     </script>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins" />
     <script src="./config.js"></script>
     <script src="./swing.js"></script>
     <script src="./util.js"></script>
@@ -13,7 +14,7 @@
             margin: 0;
             padding: 0;
             background-color: #FFFFCC;
-            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Poppins', Verdana, Geneva, Tahoma, sans-serif;
         }
 
         #canvas {
@@ -27,6 +28,12 @@
         .collage {
             position: absolute;
             padding: 40px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 30px;
+        }
+
+        .button {
+            cursor: pointer;
         }
 
         .userCard {
@@ -49,6 +56,9 @@
         .timestamp {
 
         }
+        .caption {
+            margin-top: 0;
+        }
 
         .polaroid {
             position: absolute;
@@ -56,8 +66,8 @@
             align-content: center;
             padding: 20px;
             padding-bottom: 40px;
-            border-radius: 12px;
-            box-shadow: 16px 16px 4px rgba(0, 0, 0, .2);
+            box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.25);
+            border-radius: 19px;
         }
 
         .polaroid:hover {
@@ -198,13 +208,6 @@
         };
 
         const genMedia = (url, index, layerCounts) => {
-            let media;
-            if(isPhotoUrl(url)) {
-                media = genImage(url);
-            }else if(isVideoUrl(url)){
-                media = genVideo(url);
-            }
-
             const el = document.createElement("div");
             el.classList.add('polaroid');
 
@@ -212,14 +215,41 @@
             el.style.left = x;
             el.style.top = y;
 
-            el.style.backgroundColor = "#FFF";//genRandomPastel();
+            el.style.backgroundColor = "#FFF";
+
+            let media;
+            if(isPhotoUrl(url)) {
+                media = genImage(url);
+            }else if(isVideoUrl(url)){
+                media = genVideo(url);
+            }
+
+            el.appendChild(media);
+
+            const socialContain = document.createElement('div');
+            socialContain.style.display = 'flex';
+            socialContain.style.flexDirection = 'row';
+            socialContain.style.alignItems = 'center';
+            socialContain.style.padding = 8;
+
+            const likeIcon = document.createElement('img');
+            likeIcon.src = './img/icons/like.png'
+            likeIcon.classList.add('button');
+            socialContain.appendChild(likeIcon);
+
+            const commentIcon = document.createElement('img');
+            commentIcon.src = './img/icons/comment.png'
+            commentIcon.style.marginLeft = 8;
+            commentIcon.classList.add('button');
+            socialContain.appendChild(commentIcon);
+            el.appendChild(socialContain);
 
             const caption = document.createTextNode('What an amazing day!');
             const h4 = document.createElement('h4');
             h4.classList.add('caption');
             h4.appendChild(caption);
 
-            el.appendChild(media);
+
             el.appendChild(h4);
 
             return el;
