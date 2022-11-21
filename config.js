@@ -11,6 +11,10 @@ const COLLAGES = {
                     './img/jordan/5.jpg',
                     './img/jordan/6.jpg',
                 ],
+                stickers: [
+                    './img/stickers/17.png',
+                    './img/stickers/28.png',
+                    ],
                 avatar: './img/jordan/profile.jpg',
                 name: 'Jordan Claassen',
             },
@@ -27,6 +31,11 @@ const COLLAGES = {
                     './img/andrew/7.jpg',
                     './img/andrew/8.jpg',
                 ],
+                stickers: [
+                    './img/stickers/23.png',
+                    './img/stickers/71.png',
+                    './img/stickers/56.png',
+                    ],
                 avatar: './img/andrew/profile.jpg',
                 name: 'Andrew Gadson',
             },
@@ -40,6 +49,11 @@ const COLLAGES = {
                     './img/astro/5.jpg',
                     './img/astro/0.gif',
                 ],
+                stickers: [
+                    './img/stickers/46.png',
+                    './img/stickers/2.png',
+                    './img/stickers/20.png',
+                    ],
                 avatar: './img/astro/profile.jpg',
                 name: 'Astro Tran',
 
@@ -56,6 +70,10 @@ const COLLAGES = {
                     './img/jason/7.jpg',
                     './img/jason/8.jpg',
                 ],
+                stickers: [
+                    './img/stickers/39.png',
+                    './img/stickers/42.png',
+                    ],
                 avatar: './img/jason/profile.jpg',
                 name: 'Jason Masters',
             },
@@ -67,6 +85,11 @@ const COLLAGES = {
                     './img/peter/0.gif',
                     './img/peter/3.jpg',
                 ],
+                stickers: [
+                    './img/stickers/57.png',
+                    './img/stickers/62.png',
+                    './img/stickers/43.png',
+                    ],
                 avatar: './img/peter/profile.jpg',
                 name: 'Peter Hockey',
             },

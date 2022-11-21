@@ -11,6 +11,7 @@
     <style>
         html,
         body {
+            scroll-behavior: smooth;
             margin: 0;
             padding: 0;
             background-color: #FFFFCC;
@@ -37,7 +38,7 @@
         }
 
         .userCard {
-            display:flex;
+            display: flex;
             flex-direction: row;
             align-items: center;
         }
@@ -49,13 +50,10 @@
             border-radius: 50%;
         }
 
-        .userName {
+        .userName {}
 
-        }
+        .timestamp {}
 
-        .timestamp {
-
-        }
         .caption {
             margin-top: 0;
         }
@@ -71,9 +69,31 @@
         }
 
         .polaroid:hover {
-            cursor:pointer;
+            cursor: pointer;
             z-index: 1000;
             box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        .sticker {
+            position: absolute;
+            max-width: 400px;
+            max-height: 400px;
+        }
+
+        .leftNav {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            display: flex;
+            flex-direction: column;
+            z-index: 2000;
+        }
+
+        .leftNavItem {
+            border: 4px solid #FFF;
+            box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.4);
+            margin-bottom: 8px;
+            cursor: pointer;
         }
 
         @keyframes swinging-light {
@@ -109,9 +129,12 @@
 
     <script type="text/javascript">
 
-        const genCollage = (collageData, index, collageCount) => {
-            const collage = genCollageContainer(index, collageCount, collageData.media.length);
+        const userLocations = {
 
+        };
+
+        const genCollage = (userKey, collageData, index, collageCount) => {
+            const collage = genCollageContainer(userKey, index, collageCount, collageData.media.length);
 
             // lay out media
             const layerCounts = getMediaLayerCounts(collageData.media.length);
@@ -120,22 +143,32 @@
                 collage.appendChild(media);
             });
 
-
             // add avatar
             const userCard = genUserCard(collageData);
             collage.appendChild(userCard);
-
-
-            return collage;
 
             // add stickers
             collageData.stickers.forEach((stickerData, index) => {
                 const sticker = genSticker(stickerData, index);
                 collage.appendChild(sticker);
             });
+
+
+            return collage;
         };
 
-        const genCollageContainer = (index, collageCount, mediaCount) => {
+        const genSticker = (img, index) => {
+            const stickerEl = document.createElement('img');
+            stickerEl.src = img;
+            stickerEl.classList.add('sticker');
+            stickerEl.style.top = (10 + Math.floor(RNG() * 70)) + '%';
+            stickerEl.style.left = (10 + Math.floor(RNG() * 70)) + '%';
+            stickerEl.style.transform = "rotate(" + Math.floor(-5 + 10 * RNG()) + "deg)";
+
+            return stickerEl;
+        }
+
+        const genCollageContainer = (userKey, index, collageCount, mediaCount) => {
             const el = document.createElement("div");
             el.classList.add('collage');
 
@@ -143,30 +176,30 @@
 
             const [width, height] = getCollageDimensions(mediaCount);
             el.style.width = width;
-            el.style.height =  height;
+            el.style.height = height;
 
             const OVERALL_WIDTH = 6000;
             const OVERALL_HEIGHT = 4000;
 
             let relX;
             let relY;
-            if(index == 4) {
+            if (index == 4) {
                 relX = 0;
                 relY = 0;
-            }else {
+            } else {
                 const radian = (2 * Math.PI * index / 4) + Math.PI / 5;
                 relX = Math.sin(radian);
                 relY = Math.cos(radian);
             }
 
-            const x = relX * OVERALL_WIDTH / 2 + OVERALL_WIDTH/2;
-            const y = relY * OVERALL_HEIGHT / 2 + OVERALL_HEIGHT/2;
+            const x = relX * OVERALL_WIDTH / 2 + OVERALL_WIDTH / 2;
+            const y = relY * OVERALL_HEIGHT / 2 + OVERALL_HEIGHT / 2;
 
             el.style.left = x;
             el.style.top = y;
 
-            // el.style.top = 40 + Math.floor(index / 3) * height * 1.2;
-            // el.style.left = 40 + Math.floor(index % 3) * width * 1.2;
+            // contains the center point of collages
+            userLocations[userKey] = { x, y };
 
             return el;
         }
@@ -220,9 +253,9 @@
             el.style.backgroundColor = "#FFF";
 
             let media;
-            if(isPhotoUrl(url)) {
+            if (isPhotoUrl(url)) {
                 media = genImage(url);
-            }else if(isVideoUrl(url)){
+            } else if (isVideoUrl(url)) {
                 media = genVideo(url);
             }
 
@@ -274,13 +307,38 @@
             return imgEl;
         };
 
-        (function() {
+        const genLeftNav = () => {
+            const el = document.createElement("div");
+            el.classList.add('leftNav');
+            Object.entries(COLLAGES).forEach(([userKey, collageData], index) => {
+                const leftNavItem = genLeftNavItem(userKey, collageData);
+                el.appendChild(leftNavItem);
+            });
+            return el;
+        };
+
+        const genLeftNavItem = (userKey, collageData) => {
+            const avatar = genAvatar(collageData);
+            avatar.classList.add('leftNavItem');
+            avatar.onclick = () => {
+                console.log(userKey + " clicked");
+                window.scrollTo(userLocations[userKey]?.x ?? 0, userLocations[userKey]?.y ?? 0);
+
+            }
+
+            return avatar;
+        }
+
+        (function () {
             const canvas = document.getElementById("canvas");
 
-            Object.entries(COLLAGES).forEach(([name, collageData], index) => {
-                const el = genCollage(collageData, index, COLLAGES.length);
+            Object.entries(COLLAGES).forEach(([userKey, collageData], index) => {
+                const el = genCollage(userKey, collageData, index, COLLAGES.length);
                 canvas.appendChild(el);
             });
+
+            const leftNav = genLeftNav();
+            canvas.append(leftNav);
 
             console.log('layout complete');
         })();
