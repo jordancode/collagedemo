@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=0.1; maximum-scale=10;"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=0.1; maximum-scale=10;" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js">
     </script>
@@ -188,22 +188,14 @@
             el.style.width = width;
             el.style.height = height;
 
-            const OVERALL_WIDTH = 6000;
-            const OVERALL_HEIGHT = 4000;
+            const xIndex = index % 5;
+            const yIndex = Math.floor(index / 5);
 
-            let relX;
-            let relY;
-            if (index == 4) {
-                relX = 0;
-                relY = 0;
-            } else {
-                const radian = (2 * Math.PI * index / 4) + Math.PI / 5;
-                relX = Math.sin(radian);
-                relY = Math.cos(radian);
-            }
+            const CELL_WIDTH = 3000;
+            const CELL_HEIGHT = 2000;
 
-            const x = relX * OVERALL_WIDTH / 2 + OVERALL_WIDTH / 2;
-            const y = relY * OVERALL_HEIGHT / 2 + OVERALL_HEIGHT / 2;
+            const x = xIndex * CELL_WIDTH + (CELL_WIDTH - width) / 2;
+            const y = yIndex * CELL_HEIGHT + (CELL_HEIGHT - height) / 2;;
 
             el.style.left = x;
             el.style.top = y;
@@ -317,10 +309,10 @@
             return imgEl;
         };
 
-        const genLeftNav = () => {
+        const genLeftNav = (userList) => {
             const el = document.createElement("div");
             el.classList.add('leftNav');
-            Object.entries(COLLAGES).forEach(([userKey, collageData], index) => {
+            Object.entries(userList).forEach(([userKey, collageData], index) => {
                 const leftNavItem = genLeftNavItem(userKey, collageData);
                 el.appendChild(leftNavItem);
             });
@@ -339,10 +331,18 @@
             return avatar;
         }
 
+        const dupedCollages = Object.entries(COLLAGES).reduce((acc, [key, value]) => {
+            acc[key] = value;
+            for(let i = 1; i < 5; i++) {
+                acc[`${i}${key}`] = value;
+            }
+            return acc;
+        },{});
+
         const genRadar = () => {
             const radarOverlay = document.createElement("div");
 
-            Object.values(COLLAGES).forEach(() => {
+            Object.values(dupedCollages).forEach(() => {
                 const radarName = document.createElement("div");
                 const name = document.createTextNode(collageData.name ?? 'Anon Smitherson');
                 const h3 = document.createElement('h3');
@@ -353,12 +353,12 @@
         (function () {
             const canvas = document.getElementById("canvas");
 
-            Object.entries(COLLAGES).forEach(([userKey, collageData], index) => {
-                const el = genCollage(userKey, collageData, index, COLLAGES.length);
+            Object.entries(dupedCollages).forEach(([userKey, collageData], index) => {
+                const el = genCollage(userKey, collageData, index, dupedCollages.length);
                 canvas.appendChild(el);
             });
 
-            const leftNav = genLeftNav();
+            const leftNav = genLeftNav(COLLAGES);
             canvas.append(leftNav);
 
             console.log('layout complete');
