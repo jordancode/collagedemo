@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <script>
+            const bubbles = [];
+
+            const addBubble = () => {
+                const d = Math.round(100 + Math.random() * 150);
+                const [x,y] = getNextLocation(d);
+
+                const bubble = {x,y,d};
+
+                bubbles.push(bubble);
+
+                const bubbleEl = createBubbleEl(bubble);
+
+                document.getElementById("canvas").appendChild(bubbleEl);
+            };
+
+            const getNextLocation = (d) => {
+                // For each circle in the list
+                // start with the top
+                // navigate around the edge of the circle
+                // try new location
+                // when a spot doesn't intersect any other circle, place circle
+                for( let bubble of bubbles) {
+                    for(let degrees = 0; degrees < 360; degrees++) {
+                        const [x,y] = getCenterFromTangentPoint(bubble, degrees, d);
+                        let foundCollision = false;
+
+                        for( let bubble2 of bubbles) {
+                            if(doBubblesIntersect({x,y,d}, bubble2)) {
+                                foundCollision = true;
+                                break;
+                            }
+                        }
+
+                        if(!foundCollision) {
+                            return [x,y];
+                        }
+                    }
+                }
+
+                return [0,0];
+            }
+
+            const getCenterFromTangentPoint = (bubble, degrees, d) => {
+                const r = (bubble.d / 2 + d/ 2);
+                const theta = (degrees / 180) * Math.PI;
+                const x = bubble.x + r * Math.cos(theta);
+                const y = bubble.y + r * Math.sin(theta);
+
+                return [x, y];
+            }
+
+            const doBubblesIntersect = (b1, b2) => {
+                const {x:x1, y:y1,d:d1} = b1;
+                const {x:x2, y:y2,d:d2} = b2;
+
+                const ret = Math.sqrt(Math.pow(x2 - x1,2) + Math.pow(y2 - y1, 2)) < d1/2 + d2/2;
+                return ret;
+            }
+
+            const createBubbleEl = ({x,y,d}) => {
+                const bubble = document.createElement('div');
+                bubble.style.borderRadius = '50%';
+                bubble.style.backgroundColor = '#FF0000';
+                bubble.style.position = 'absolute';
+                bubble.style.top = y - (d/2);
+                bubble.style.left = x - (d/2);
+
+                bubble.style.width = d;
+                bubble.style.height = d;
+
+                return bubble;
+            }
+        </script>
+
+    </head>
+    <body>
+        <div id="header" style="position: fixed; z-index: 1000;">
+            <button onclick="addBubble();">Add bubble</button>
+        </div>
+        <div id="canvas" style="position: absolute; top: 50%; left: 50%;"></div>
+    </body>
+</html>
